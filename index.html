@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html ng-app="GetWork">
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--Bootstrap-->
+    <link href="./bootstrap3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!--Angular Bootstrap-->
+    <link href="angularUi/ui-bootstrap-csp.css" rel="stylesheet">
+    <!--Custom css-->
+    <link href="index.css" rel="stylesheet">
+</head>
+
+<body>
+    <!--Navigation Bar Starts-->
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+                <a class="navbar-brand">Get Work</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li><a href="#">Home<span class="sr-only">(current)</span></a></li>
+                    <li><a href="#">About us</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href data-toggle="modal" data-target="#login">Login</a></li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+    <!--Navigation Bar Ends-->
+    <!-- Login Modal begins -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="modal fade" tabindex="-1" id="login">
+                    <div class="modal-dialog modal-md">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">
+                    &times;
+                </button>
+                                <h4 class="modal-title text-center ">Login</h4>
+                            </div>
+                            <div class="modal-body">
+                                <center><img src="memberlogin.jpg" class="img-responsive img-fluid" style="border-radius: 50%"></center>
+                                <br><br>
+                                <form class="form-horizontal" action="login" method="Post">
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-2" for="inputUserName">Username</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" id="inputUserName" placeholder="Enter Username" name="loginusername" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-2" for="inputPassword">Password</label>
+                                        <div class="col-sm-10">
+                                            <input type="password" class="form-control" id="inputPassword" placeholder="Enter Password" name="loginpassword" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-sm-4 col-sm-offset-2">
+                                            <select name="status">
+  <option value="user">USER</option>
+  <option value="company">COMPANY</option>
+   </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="col-sm-10 col-sm-offset-2">
+
+                                            <a data-target="#forgotModal" data-toggle="modal" style="text-decoration:none; color:white; background-color:red;">Forgot Password?Click Here</a>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <button type="submit" class="btn btn-primary" style="width:100%; border-radius:5px;">Login</button>
+                                    </div>
+                                </form>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Login modal ends -->
+    <!--  Forgot Password Modal -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="modal fade" tabindex="-1" id="forgotModal">
+                    <div class="modal-dialog modal-md">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">
+                    &times;
+                </button>
+                                <h4 class="modal-title text-center ">Forgot Password</h4>
+                            </div>
+                            <div class="modal-body">
+                                <center><img src="img/loginmodal/memberlogin.jpg" class="img-responsive img-fluid" style="border-radius: 50%"></center>
+                                <br><br>
+                                <form class="form-horizontal" action="forgotpass" method="Post">
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-2" for="inputUserName">Username</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" id="inputUserName" placeholder="Enter Username" name="forgotusername" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-2" for="inputphone">Phone Number</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" id="inputPhone" placeholder="Enter  Your Phone Number" name="forgotphone" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-sm-4 col-sm-offset-2">
+                                            <select name="status">
+  <option value="user">USER</option>
+  <option value="company">COMPANY</option>
+   </select>
+                                        </div>
+                                    </div>
+
+
+
+                                    <div class="form-group">
+                                        <button type="submit" class="btn btn-primary" style="width:100%; border-radius:5px;">Get Password</button>
+                                    </div>
+                                </form>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <section class="main-body">
+        <div class="container-fluid">
+            <div class="row">
+
+                <div class="col-sm-6">
+                    <h1 style="letter-spacing:20px;" align="center">GETWORK</h1>
+                    <img src="ShivamImage.png" class="left-image" alt="Image.jpg">
+                    <h2>Hire expert freelancers for your job, online</h2>
+
+                </div>
+
+                <!--Login SignUp Starts-->
+                <div class="col-sm-4 col-sm-offset-1">
+                    <div class="well">
+                        <uib-tabset type="pills">
+                            <h2 align="center">SIGNUP</h2>
+                            <!-- freelancer pill -->
+                            <uib-tab heading="FreeLancer" style="width: 40%;text-align: center;">
+                                <hr>
+                                <form class="form-group">
+                                    <input class="form-control" type="text" placeholder="Username">
+                                    <br>
+                                    <input class="form-control" type="password" placeholder="Password">
+                                    <br>
+                                    <input class="form-control" type="text" placeholder="E-mail">
+                                    <br>
+
+                                    <input class="form-control" type="text" placeholder="Phone Number">
+                                    <br>
+                                    <input class="form-control" type="text" placeholder="skills">
+                                    <br>
+                                    <div class="row">
+                                        <div class="col-sm-4 col-sm-offset-4">
+                                            <button class="cust-btn btn btn-primary btn-block" type="submit">Signup</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </uib-tab>
+                            <!-- employer pill -->
+                            <uib-tab heading="Employer" style="width: 40%;text-align: center;margin-left: 10%">
+                                <hr>
+                                <form class="form-group">
+                                    <input class="form-control" type="text" placeholder="Username">
+                                    <br>
+                                    <input class="form-control" type="password" placeholder="Password">
+                                    <br>
+                                    <input class="form-control" type="text" placeholder=" E-mail">
+                                    <br>
+                                    <input class="form-control" type="text" placeholder="Company Name">
+                                    <br>
+                                    <input class="form-control" type="text" placeholder="Company Address">
+                                    <br>
+                                    <input class="form-control" type="text" placeholder="Phone Number">
+                                    <br>
+                                    <input class="form-control" type="text" placeholder="Location">
+                                    <br>
+                                    <div class="row">
+                                        <div class="col-sm-4 col-sm-offset-4">
+                                            <button class="btn btn-primary btn-block" type="submit">Signup</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </uib-tab>
+                        </uib-tabset>
+                    </div>
+                </div>
+                <!--Login Signup Ends-->
+            </div>
+        </div>
+    </section>
+    <div class="col-sm-12">
+        <h3 align="center"> Millions of small businesses use freelance jobs on GetWork to turn their ideas into reality.</h3>
+
+    </div>
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6 col-md-offset-5">
+                    <span class="copyright">Copyright &copy; Getwork pvt Ltd.</span>
+                </div>
+                <div class="col-md-4">
+                    <ul class="list-inline social-buttons">
+                        <li><a href="#"><i class="fa fa-twitter"></i></a>
+                        </li>
+                        <li><a href="#"><i class="fa fa-facebook"></i></a>
+                        </li>
+                        <li><a href="#"><i class="fa fa-linkedin"></i></a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </footer>
+    <!-- Footer ends -->
+</body>
+<!--Jquery-->
+<script src="jQuery/jquery-3.2.1.min.js" type="text/javascript"></script>
+
+<!--Bootstrap-->
+<script src="bootstrap3/dist/js/bootstrap.min.js" type="text/javascript"></script>
+<!--Angular Js-->
+<script src="./angular/angular.min.js" type="text/javascript"></script>
+<!--Angular Bootstrap-->
+<script src="angularUi/ui-bootstrap-tpls.js" type="text/javascript"></script>
+<!--Custom Js-->
+<script src="index.js" type="text/javascript"></script>
+
+</html>
