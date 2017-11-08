@@ -1,1 +1,1 @@
-angular.module("GetWork",['ui.bootstrap']);
+angular.module("GetWork",['ui.bootstrap','ngMessages']);

@@ -20,15 +20,16 @@ hr {
     border: 1px solid rgba(155, 155, 155, 1);
 }
 
-.navbar-default .navbar-collapse,
-.navbar-default .navbar-form {
-    border-color: #e7e7e7;
+nav.navbar.navbar-default{
     background-color: #337ab7;
 }
 
-.navbar-default .navbar-brand {
-    color: white;
-    background-color: #337ab7;
+a.navbar-brand{
+    color: white !important;
+    background-color: #1363a7 !important;
+}
+a.navbar-brand:hover{
+    background-color: #1363a7 !important;
 }
 
 .navbar-default .navbar-nav > .active > a,
@@ -47,4 +48,10 @@ hr {
 .navbar-default .navbar-nav > li > a:focus {
     background-color: #1363a7;
     color: white;
+}
+input.ng-invalid{
+    border:1px solid darkred;
+}
+input.ng-untouched{
+    border:1px solid #cccccc;
 }

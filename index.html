@@ -58,32 +58,41 @@
                             <div class="modal-body">
                                 <center><img src="memberlogin.jpg" class="img-responsive img-fluid" style="border-radius: 50%"></center>
                                 <br><br>
-                                <form class="form-horizontal" action="login" method="Post">
+                                <form class="form-horizontal" name="loginForm" action="login" method="Post" novalidate>
                                     <div class="form-group">
                                         <label class="control-label col-sm-2" for="inputUserName">Username</label>
                                         <div class="col-sm-10">
-                                            <input type="text" class="form-control" id="inputUserName" placeholder="Enter Username" name="loginusername" required>
+                                            <input type="text" class="form-control" id="inputUserName" ng-model="loginusername" placeholder="Enter Username" name="loginusername" required>
+                                            <span ng-show="loginForm.loginusername.$touched || loginForm.$submitted" ng-messages="loginForm.loginusername.$error" pattern="^[a]*$">
+                                                <span ng-message="required" class="text-danger">You can't leave this empty.</span>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label col-sm-2" for="inputPassword">Password</label>
                                         <div class="col-sm-10">
-                                            <input type="password" class="form-control" id="inputPassword" placeholder="Enter Password" name="loginpassword" required>
+                                            <input type="password" class="form-control" ng-model="loginpassword" id="inputPassword" placeholder="Enter Password" name="loginpassword" required>
+                                            <span ng-show="loginForm.loginpassword.$touched || loginForm.$submitted" ng-messages="loginForm.loginpassword.$error">
+                                                <span ng-message="required" class="text-danger">You can't leave this empty.</span>
+                                            </span>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <div class="col-sm-4 col-sm-offset-2">
-                                            <select class="form-control" name="status">
-  <option value="user">USER</option>
-  <option value="company">COMPANY</option>
-   </select>
+                                        <div class="col-sm-10 col-sm-offset-2">
+                                            <select class="form-control" ng-model="status" name="status" required>
+                                                <option disabled value="">Please select user type</option>
+                                                <option value="user">USER</option>
+                                                <option value="company">COMPANY</option>
+                                            </select>
+                                            <span ng-show="loginForm.status.$touched || loginForm.$submitted" ng-messages="loginForm.status.$error">
+                                                <span ng-message="required" class="text-danger">You can't leave this empty.</span>
+                                            </span>
                                         </div>
                                     </div>
 
                                     <div class="form-group">
                                         <div class="col-sm-10 col-sm-offset-2">
 
-                                            <a data-target="#forgotModal" data-toggle="modal" class="text-primary" style="text-decoration:none;cursor: pointer;">Forgot Password?Click Here</a>
+                                            <a data-target="#forgotModal" data-toggle="modal" class="text-primary" style="text-decoration:none;cursor: pointer;">Forgot Password?</a>
                                         </div>
                                     </div>
 
@@ -121,9 +130,9 @@
                                 <br><br>
                                 <form class="form-horizontal" action="forgotpass" method="Post">
                                     <div class="form-group">
-                                        <label class="control-label col-sm-2" for="inputUserName">Username</label>
+                                        <label class="control-label col-sm-2" for="inputUserNameForgotPass">Username</label>
                                         <div class="col-sm-10">
-                                            <input type="text" class="form-control" id="inputUserName" placeholder="Enter Username" name="forgotusername" required>
+                                            <input type="text" class="form-control" id="inputUserNameForgotPass" placeholder="Enter Username" name="forgotusername" required>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -134,7 +143,7 @@
                                     </div>
                                     <div class="form-group">
                                         <div class="col-sm-4 col-sm-offset-2">
-                                            <select name="status">
+                                            <select class="form-control" name="status">
   <option value="user">USER</option>
   <option value="company">COMPANY</option>
    </select>
@@ -143,8 +152,10 @@
 
 
 
-                                    <div class="form-group">
-                                        <button type="submit" class="btn btn-primary" style="width:100%; border-radius:5px;">Get Password</button>
+                                    <div class="row">
+                                        <div class="col-sm-4 col-sm-offset-4">
+                                            <button type="submit" class="btn-block btn btn-primary">Get Password</button>
+                                        </div>
                                     </div>
                                 </form>
                             </div>
@@ -177,17 +188,34 @@
                             <!-- freelancer pill -->
                             <uib-tab heading="FreeLancer" style="width: 40%;text-align: center;">
                                 <hr>
-                                <form class="form-group">
-                                    <input class="form-control" type="text" placeholder="Username">
+                                <form class="form-group" name="freeForm" novalidate>
+                                    <input name="freeUsername" ng-model="freeUsername" class="form-control" type="text" placeholder="Username" required>
+                                    <span ng-show="freeForm.freeUsername.$touched || freeForm.$submitted" ng-messages="freeForm.freeUsername.$error">
+                                        <span ng-message="required" class="text-danger">You can't leave this empty.</span>
+                                    </span>
                                     <br>
-                                    <input class="form-control" type="password" placeholder="Password">
+                                    <input name="freePassword" ng-model="freePassword" class="form-control" type="password" placeholder="Password" required>
+                                    <span ng-show="freeForm.freePassword.$touched || freeForm.$submitted" ng-messages="freeForm.freePassword.$error">
+                                        <span ng-message="required" class="text-danger">You can't leave this empty.</span>
+                                    </span>
                                     <br>
-                                    <input class="form-control" type="text" placeholder="E-mail">
+                                    <input name="freeEmail" ng-model="freeEmail" class="form-control" type="text" placeholder="E-mail" pattern='^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$' required>
+                                    <span ng-show="freeForm.freeEmail.$touched || freeForm.$submitted" ng-messages="freeForm.freeEmail.$error">
+                                        <span ng-message="required" class="text-danger">You can't leave this empty.</span>
+                                        <span ng-message="pattern" class="text-danger">Please enter a valid email only.</span>
+                                    </span>
                                     <br>
-
-                                    <input class="form-control" type="text" placeholder="Phone Number">
+                                    <input name="freeMobile" ng-model="freeMobile" class="form-control" type="text" placeholder="Phone Number"  maxlength="10" minlength="10" pattern="^[789][0-9]{9}$" required>
+                                    <span ng-show="freeForm.freeMobile.$touched || freeForm.$submitted" ng-messages="freeForm.freeMobile.$error">
+                                        <span ng-message="required" class="text-danger">You can't leave this empty.</span>
+                                        <span ng-message="minlength" class="text-danger">Enter a 10 digit mobile number</span>
+                                        <span ng-message="pattern" class="text-danger">Please enter a valid phone number only.</span>
+                                    </span>
                                     <br>
-                                    <input class="form-control" type="text" placeholder="skills">
+                                    <input name="freeSkills" ng-model="freeSkills" class="form-control" type="text" placeholder="Skills" required>
+                                    <span ng-show="freeForm.freeSkills.$touched || freeForm.$submitted" ng-messages="freeForm.freeSkills.$error">
+                                        <span ng-message="required" class="text-danger">You can't leave this empty.</span>
+                                    </span>
                                     <br>
                                     <div class="row">
                                         <div class="col-sm-4 col-sm-offset-4">
@@ -199,26 +227,52 @@
                             <!-- employer pill -->
                             <uib-tab heading="Employer" style="width: 40%;text-align: center;margin-left: 10%">
                                 <hr>
-                                <form class="form-group">
-                                    <input class="form-control" type="text" placeholder="Username">
+                                <form class="form-group" name="empForm">
+                                    <input class="form-control" name="empUsername" ng-model="empUsername" type="text" placeholder="Username" required>
+                                    <span ng-show="empForm.empUsername.$touched || empForm.$submitted" ng-messages="empForm.empUsername.$error">
+                                        <span ng-message="required" class="text-danger">You can't leave this empty.</span>
+                                    </span>
                                     <br>
-                                    <input class="form-control" type="password" placeholder="Password">
+                                    <input class="form-control" name="empPassword" ng-model="empPassword" type="password" placeholder="Password" required>
+                                    <span ng-show="empForm.empPassword.$touched || empForm.$submitted" ng-messages="empForm.empPassword.$error">
+                                        <span ng-message="required" class="text-danger">You can't leave this empty.</span>
+                                    </span>
                                     <br>
-                                    <input class="form-control" type="text" placeholder=" E-mail">
+                                    <input class="form-control" name="empEmail" ng-model="empEmail" type="text" placeholder=" E-mail" pattern='^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$' required>
+                                    <span ng-show="empForm.empEmail.$touched || empForm.$submitted" ng-messages="empForm.empEmail.$error">
+                                        <span ng-message="required" class="text-danger">You can't leave this empty.</span>
+                                        <span ng-message="pattern" class="text-danger">Please enter a valid email.</span>
+                                    </span>
                                     <br>
-                                    <input class="form-control" type="text" placeholder="Company Name">
+                                    <input class="form-control" name="empCompanyName" ng-model="empCompanyName" type="text" placeholder="Company Name" pattern="^[A-Za-z0-9\s]*$" required>
+                                    <span ng-show="empForm.empCompanyName.$touched || empForm.$submitted" ng-messages="empForm.empCompanyName.$error">
+                                        <span ng-message="required" class="text-danger">You can't leave this empty.</span>
+                                        <span ng-message="pattern" class="text-danger">Please enter a valid name.</span>
+                                    </span>
                                     <br>
-                                    <input class="form-control" type="text" placeholder="Company Address">
+                                    <input class="form-control" name="empCompanyAddress" ng-model="empCompanyAddress" type="text" placeholder="Company Address" required>
+                                    <span ng-show="empForm.empCompanyAddress.$touched || empForm.$submitted" ng-messages="empForm.empCompanyAddress.$error">
+                                        <span ng-message="required" class="text-danger">You can't leave this empty.</span>
+                                    </span>
                                     <br>
-                                    <input class="form-control" type="text" placeholder="Phone Number">
+                                    <input class="form-control" name="empPhone" ng-model="empPhone" type="text" placeholder="Phone Number" maxlength="10" minlength="10" pattern="^[789][0-9]{9}$" required>
+                                    <span ng-show="empForm.empPhone.$touched || empForm.$submitted" ng-messages="empForm.empPhone.$error">
+                                        <span ng-message="required" class="text-danger">You can't leave this empty.</span>
+                                        <span ng-message="minlength" class="text-danger">Enter a 10 digit phone number.</span>
+                                        <span ng-message="pattern" class="text-danger">Please enter a valid phone number.</span>
+                                    </span>
                                     <br>
-                                    <input class="form-control" type="text" placeholder="Location">
+                                    <input class="form-control" name="empLocation" ng-model="empLocation" type="text" placeholder="Location" required>
+                                    <span ng-show="empForm.empLocation.$touched || empForm.$submitted" ng-messages="empForm.empLocation.$error">
+                                        <span ng-message="required" class="text-danger">You can't leave this empty.</span>
+                                    </span>
                                     <br>
                                     <div class="row">
                                         <div class="col-sm-4 col-sm-offset-4">
                                             <button class="btn btn-primary btn-block" type="submit">Signup</button>
                                         </div>
                                     </div>
+                                    <pre>{{empForm|json}}</pre>
                                 </form>
                             </uib-tab>
                         </uib-tabset>
@@ -262,6 +316,8 @@
 <script src="bootstrap3/dist/js/bootstrap.min.js" type="text/javascript"></script>
 <!--Angular Js-->
 <script src="./angular/angular.min.js" type="text/javascript"></script>
+<!--Angular Messages-->
+<script src="angular/angular-messages.min.js"></script>
 <!--Angular Bootstrap-->
 <script src="angularUi/ui-bootstrap-tpls.js" type="text/javascript"></script>
 <!--Custom Js-->
